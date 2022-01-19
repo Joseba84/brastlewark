@@ -1,0 +1,37 @@
+$title-bg-color: #8B4513;
+$border-color: #78ae41;
+
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-wrapper {
+        display: block;
+        position: relative;
+        padding: 10px;
+        margin-top: 2rem;
+        border-top: 10px solid  $border-color;
+        border-bottom: 10px solid  $border-color;
+        background-color: $title-bg-color;
+
+        &:before, &:after {
+            content: '';
+            top: 0;
+            width: 10px;
+            height: 100%;
+            position: absolute;
+            background: $border-color;
+        }
+
+        &:before { left: -10px; }
+        &:after { right: -10px; }
+    }
+
+    .title {
+        font-family: 'VT323', monospace;
+        font-size: 5rem;
+        color: white;
+    }
+}
