@@ -1,6 +1,4 @@
-$title-bg-color: #8B4513;
-$border-color: #78ae41;
-
+@import "../../../styles/colors.scss";
 
 .header {
     display: flex;
@@ -12,9 +10,9 @@ $border-color: #78ae41;
         position: relative;
         padding: 10px;
         margin-top: 2rem;
-        border-top: 10px solid  $border-color;
-        border-bottom: 10px solid  $border-color;
-        background-color: $title-bg-color;
+        border-top: 10px solid  $brand2;
+        border-bottom: 10px solid  $brand2;
+        background-color: $brand3;
 
         &:before, &:after {
             content: '';
@@ -22,7 +20,7 @@ $border-color: #78ae41;
             width: 10px;
             height: 100%;
             position: absolute;
-            background: $border-color;
+            background: $brand2;
         }
 
         &:before { left: -10px; }

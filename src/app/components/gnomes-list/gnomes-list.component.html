@@ -1,0 +1,23 @@
+<p *ngIf="!gnomesByPagination">Loading...</p>
+<div *ngIf="gnomesByPagination">
+    <ul class="list">
+        <li class="list-gnome" *ngFor="let gnome of gnomesByPagination[currentPag]; let i = index">
+            <div class="list-gnome-row">
+                <img alt="{{ gnome.name }}" class="list-gnome-img" src="{{ gnome.thumbnail }}">
+                <p>{{ gnome.id + 1 }} - {{ gnome.name }}</p>
+                <p>{{ gnome.age }}</p>
+                <p>{{ gnome.weight }}</p>
+                <p>{{ gnome.height }}</p>
+                <p>{{ gnome.hair_color }}</p>
+                <a href="#" (click)="showDetail()">View detail</a>
+            </div>
+        </li>
+    </ul>
+    <p>Showing {{ this.currentPag + 1 }} pag of {{ gnomesByPagination.length }}</p>
+    <button class="goToFirstPag" (click)="goToPag('first')">First</button>
+    <button class="prevPag" (click)="prevPag()">Previous</button>
+    <button class="nextPag" (click)="nextPag()">Next</button>
+    <button class="goToLastPag" (click)="goToPag('last')">Last</button>
+</div>
+
+

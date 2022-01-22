@@ -1,0 +1,33 @@
+@import "../../../styles/colors.scss";
+.list {
+    width: 65%;
+    margin: 20px;
+    height: 577px;
+    overflow: auto;
+    border: 2px solid $brand4;
+
+    &-gnome {
+        border-bottom: 2px solid $brand4;
+        padding: 10px;
+        color: white;
+    }
+
+    &-gnome-row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &-gnome-img {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        border: 2px solid $brand1;
+    }
+
+    &-gnome-detail {
+        &.closed { display: none; }
+        &.open { display: block; }
+    }
+}

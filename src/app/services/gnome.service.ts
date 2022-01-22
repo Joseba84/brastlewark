@@ -5,9 +5,8 @@ import { catchError } from 'rxjs/operators';
 import { Gnome } from './../models/gnome';
 
 export interface GnomeApiResponse{
-  gnomes: Gnome[]
+  Brastlewark: Gnome[]
 }
-
 @Injectable({
   providedIn: 'root',
 })
@@ -17,16 +16,15 @@ export class GnomeService {
 
   constructor(private http: HttpClient) {}
 
-  public getPopulation(): Observable<Gnome[]> {
+  public getPopulation(): Observable<GnomeApiResponse> {
     return this.http
-    .get<Gnome[]>(this.dataUrl)
-    .pipe(catchError(this.handleError<Gnome[]>('getPopulation')))
+    .get<GnomeApiResponse>(this.dataUrl)
+    .pipe(catchError(this.handleError<GnomeApiResponse>('getPopulation')))
   }
 
   private handleError<T>(operation = 'operation') {
     return (error: HttpErrorResponse): Observable<T> => {
       console.error(`${operation} failed: ${error.message}`);
-      console.log(error);
 
       return throwError({status: error.status, message: error.statusText});
     };

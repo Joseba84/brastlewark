@@ -1,10 +1,9 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing'
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
 import { gnomes } from '../spec-helpers/gnome.spec-helper';
+import { GnomeService, GnomeApiResponse } from './gnome.service';
 
-import { GnomeService } from './gnome.service';
-
-fdescribe('GnomeService', () => {
+describe('GnomeService', () => {
   let service: GnomeService;
   let controller: HttpTestingController;
 
@@ -12,7 +11,7 @@ fdescribe('GnomeService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule],
     });
     service = TestBed.inject(GnomeService);
     controller = TestBed.inject(HttpTestingController);
@@ -28,10 +27,11 @@ fdescribe('GnomeService', () => {
 
   it('return population of gnomes', () => {
     service.getPopulation().subscribe((res) => {
-      expect(res).toEqual(gnomes);
+      const expectedResponse: GnomeApiResponse = { Brastlewark: gnomes };
+      expect(res).toEqual(expectedResponse);
     });
 
-    controller.expectOne(expectedUrl).flush(gnomes);
+    controller.expectOne(expectedUrl).flush({ Brastlewark: gnomes });
   });
 
   it('passes through search errors', () => {
