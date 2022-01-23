@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Gnome } from '../../models/gnome';
 import { GnomeService, GnomeApiResponse } from 'src/app/services/gnome.service';
 
@@ -14,6 +14,7 @@ export class GnomesListComponent implements OnInit {
   currentPag: number = 0;
 
   constructor(private gnomesService: GnomeService) {}
+  @Output() sendGnome = new EventEmitter<Gnome>();
 
   ngOnInit(): void {
     this.gnomesService.getData().subscribe((data: GnomeApiResponse) => {
@@ -49,5 +50,9 @@ export class GnomesListComponent implements OnInit {
     this.currentPag = 0;
     this.gnomesService.filterData(searchTerm, this.paginationItems);
     this.gnomesByPagination = this.gnomesService.getPaginationData();
+  }
+
+  showDetail(gnome : Gnome) {
+    this.sendGnome.emit(gnome);
   }
 }

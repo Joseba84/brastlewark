@@ -3,4 +3,21 @@
 
 body {
     font-family: 'Roboto Mono', monospace;
+    background: linear-gradient(180deg, rgba(17,17,17,1) 3%, rgba(58,121,9,1) 88%);
+    min-height: 100vh;
+}
+
+button {
+    background-color: $brand4;
+    color: $brand1;
+    border: 2px solid $brand1;
+    padding: 10px;
+    font-size: 1rem;
+    cursor:pointer;
+    transition: background-color 0.5s;
+    &:hover {
+        background-color: $brand2;
+        color: $brand4;
+        transition: background-color 0.5s;
+    }
 }

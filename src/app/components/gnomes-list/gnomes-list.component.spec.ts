@@ -1,6 +1,8 @@
-import { ComponentFixture, fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule } from '@angular/forms';
 import { GnomesListComponent } from './gnomes-list.component';
+import { SearchComponent } from '../search/search.component';
 import { By } from '@angular/platform-browser';
 import { gnome1, gnome2, gnome3, gnome4 } from '../../spec-helpers/gnome.spec-helper';
 
@@ -10,15 +12,20 @@ describe('GnomesListComponent', () => {
   let fixture: ComponentFixture<GnomesListComponent>;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      declarations: [GnomesListComponent]
+      imports: [
+        HttpClientTestingModule,
+        FormsModule
+      ],
+      declarations: [
+        GnomesListComponent,
+        SearchComponent
+      ]
     })
       .compileComponents();
     fixture = TestBed.createComponent(GnomesListComponent);
     component = fixture.componentInstance;
     component.gnomesByPagination = [[gnome1, gnome2], [gnome3, gnome4]];
     fixture.detectChanges();
-
   });
 
   it('should create', () => {
@@ -97,6 +104,15 @@ describe('GnomesListComponent', () => {
         fixture.debugElement.query(By.css('.goToLastPag')).nativeElement.click();
         expect(component.goToPag).toHaveBeenCalledWith("last");
       }));
+    });
+
+    describe('Detail link', () => {
+      it('should emit "id"', () => {
+        spyOn(component.sendGnome, 'emit');
+        fixture.detectChanges();
+        component.showDetail(gnome3);
+        expect(component.sendGnome.emit).toHaveBeenCalledWith(gnome3);
+      });
     });
   });
 });

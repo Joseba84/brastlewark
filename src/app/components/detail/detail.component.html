@@ -1,0 +1,25 @@
+<div *ngIf="gnome" class="detail">
+    <img alt="{{ gnome.name }}" class="list-gnome-img" src="{{ gnome.thumbnail }}">
+    <p class="name"><span>Name: </span>{{ gnome.name }}</p>
+    <p class="age"><span>Age: </span>{{ gnome.age }}</p>
+    <p class="weight"><span>Weight: </span>{{ gnome.weight }}</p>
+    <p class="height"><span>Height: </span>{{ gnome.height }}</p>
+    <p class="hair"><span>Hair: </span>{{ gnome.hair_color }}</p>
+
+    <div *ngIf="gnome.professions.length > 0">
+        <p class="professions"><span>Professions</span></p>
+        <ul>
+            <li *ngFor="let profession of gnome.professions; let i = index">{{ profession }}</li>
+        </ul>
+    </div>
+
+    <div *ngIf="gnome.friends.length > 0">
+        <p class="friends"><span>Friends</span></p>
+        <ul >
+            <li *ngFor="let friend of gnome.friends; let i = index">{{ friend }}</li>
+        </ul>
+    </div>
+
+
+    <button>Recruit</button>
+</div>

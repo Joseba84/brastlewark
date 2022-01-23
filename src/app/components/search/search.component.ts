@@ -7,7 +7,6 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class SearchComponent {
   term: string = "";
-  constructor() { }
 
   @Output() searchTerm = new EventEmitter<string>();
 

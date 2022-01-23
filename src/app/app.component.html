@@ -1,7 +1,9 @@
-<div class="content" role="main">
+<div role="main">
   <app-header></app-header>
-  <app-gnomes-list></app-gnomes-list>
-
+  <div class="content">
+    <app-gnomes-list class="list-content" (sendGnome)="setGnome($event)"></app-gnomes-list>
+    <app-detail class="detail-content" [gnome]="gnome"></app-detail>
+  </div>
   <!-- Footer -->
   <footer></footer>
 </div>
