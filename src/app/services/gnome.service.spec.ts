@@ -25,7 +25,7 @@ describe('GnomeService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('return population of gnomes', () => {
+  it('should return population of gnomes', () => {
     service.getData().subscribe((res) => {
       const expectedResponse: GnomeApiResponse = { Brastlewark: gnomes };
       expect(res).toEqual(expectedResponse);
@@ -34,7 +34,7 @@ describe('GnomeService', () => {
     controller.expectOne(expectedUrl).flush({ Brastlewark: gnomes });
   });
 
-  it('return population chunked data for pagination', () => {
+  it('should return population chunked data for pagination', () => {
       const itemsPerPag = 2;
       service.setPopulationData(gnomes);
       service.setPaginationData(itemsPerPag);
@@ -42,7 +42,15 @@ describe('GnomeService', () => {
       expect(service.getPaginationData()).toEqual([[gnome1, gnome2],[gnome3, gnome4]])
   });
 
-  it('passes through search errors', () => {
+  it("should set filtered data", () => {
+    service.setPopulationData(gnomes);
+    service.filterData("in", 1);
+
+    expect(service.getPaginationData().length).toBe(2);
+    expect(service.getPaginationData()).toEqual([[gnome2], [gnome4]]);
+  });
+
+  it('error', () => {
     const status = 500;
     const statusText = 'Internal Server Error';
 

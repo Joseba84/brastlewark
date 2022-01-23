@@ -13,7 +13,6 @@ export class GnomesListComponent implements OnInit {
   paginationItems: number = 20;
   currentPag: number = 0;
 
-
   constructor(private gnomesService: GnomeService) {}
 
   ngOnInit(): void {
@@ -44,5 +43,11 @@ export class GnomesListComponent implements OnInit {
     }
 
     this.currentPag = this.gnomesByPagination.length - 1;
+  }
+
+  search(searchTerm: string) {
+    this.currentPag = 0;
+    this.gnomesService.filterData(searchTerm, this.paginationItems);
+    this.gnomesByPagination = this.gnomesService.getPaginationData();
   }
 }

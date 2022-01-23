@@ -35,13 +35,19 @@ export class GnomeService {
     this.paginationData = this.chunkData(size);
   }
 
-  public chunkData (size: number): Gnome[][] {
-    const data = this.populationData;
+  public chunkData (size: number, data?: Gnome[]): Gnome[][] {
+    const population = data || this.populationData.slice();
     const chunkData = [];
-    for (var index = 0; index < data.length; index += size) {
-      chunkData.push(data.slice(index, index + size));
+    for (var index = 0; index < population.length; index += size) {
+      chunkData.push(population.slice(index, index + size));
     }
     return chunkData || [];
+  }
+
+  public filterData(term: string, size: number) {
+    const data = this.populationData;
+    const filteredData = data.filter((i) => i.name.toLowerCase().indexOf(term.toLowerCase()) > -1 );
+    this.paginationData = term.length >= 0 ? this.chunkData(size, filteredData): this.chunkData(size);
   }
 
   private handleError<T>(operation = 'operation') {

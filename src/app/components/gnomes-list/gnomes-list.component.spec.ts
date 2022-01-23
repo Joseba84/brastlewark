@@ -1,33 +1,29 @@
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { GnomesListComponent } from './gnomes-list.component';
 import { By } from '@angular/platform-browser';
 import { gnome1, gnome2, gnome3, gnome4 } from '../../spec-helpers/gnome.spec-helper';
 
+
 describe('GnomesListComponent', () => {
   let component: GnomesListComponent;
   let fixture: ComponentFixture<GnomesListComponent>;
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       declarations: [GnomesListComponent]
     })
       .compileComponents();
-  });
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(GnomesListComponent);
     component = fixture.componentInstance;
     component.gnomesByPagination = [[gnome1, gnome2], [gnome3, gnome4]];
     fixture.detectChanges();
+
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-
 
   describe('Pagination', () => {
     describe("increment", () => {
