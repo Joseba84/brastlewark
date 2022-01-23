@@ -1,9 +1,8 @@
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { GnomesListComponent } from './gnomes-list.component';
-import { gnome1, gnome2, gnome3, gnome4, gnomes } from '../../spec-helpers/gnome.spec-helper';
 import { By } from '@angular/platform-browser';
-import { Gnome } from '../../models/gnome';
+import { gnome1, gnome2, gnome3, gnome4 } from '../../spec-helpers/gnome.spec-helper';
 
 describe('GnomesListComponent', () => {
   let component: GnomesListComponent;
@@ -20,7 +19,7 @@ describe('GnomesListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(GnomesListComponent);
     component = fixture.componentInstance;
-    component.gnomesByPagination = component.chunkPopulation(gnomes, 2);
+    component.gnomesByPagination = [[gnome1, gnome2], [gnome3, gnome4]];
     fixture.detectChanges();
   });
 
@@ -28,15 +27,7 @@ describe('GnomesListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('ChunkData', () => {
-    it('should return splited array', () => {
-      const chunkedData: Gnome[][] = component.chunkPopulation(gnomes, 2);
-      const expectedData: Gnome[][] = [[gnome1, gnome2], [gnome3, gnome4]];
 
-      expect(chunkedData.length).toBe(2);
-      expect(chunkedData).toEqual(expectedData);
-    });
-  });
 
   describe('Pagination', () => {
     describe("increment", () => {

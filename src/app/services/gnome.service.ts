@@ -13,13 +13,35 @@ export interface GnomeApiResponse{
 
 export class GnomeService {
   dataUrl: string = "https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json";
-
+  private populationData: Gnome[];
+  private paginationData: Gnome[][];
   constructor(private http: HttpClient) {}
 
-  public getPopulation(): Observable<GnomeApiResponse> {
+  public getData(): Observable<GnomeApiResponse> {
     return this.http
     .get<GnomeApiResponse>(this.dataUrl)
     .pipe(catchError(this.handleError<GnomeApiResponse>('getPopulation')))
+  }
+
+  public setPopulationData(data: Gnome[]) {
+    this.populationData = data;
+  }
+
+  public getPaginationData(): Gnome[][] {
+    return this.paginationData;
+  }
+
+  public setPaginationData(size: number) {
+    this.paginationData = this.chunkData(size);
+  }
+
+  public chunkData (size: number): Gnome[][] {
+    const data = this.populationData;
+    const chunkData = [];
+    for (var index = 0; index < data.length; index += size) {
+      chunkData.push(data.slice(index, index + size));
+    }
+    return chunkData || [];
   }
 
   private handleError<T>(operation = 'operation') {

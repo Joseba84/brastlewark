@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
-import { gnomes } from '../spec-helpers/gnome.spec-helper';
+import { gnome1, gnome2, gnome3, gnome4, gnomes } from '../spec-helpers/gnome.spec-helper';
 import { GnomeService, GnomeApiResponse } from './gnome.service';
 
 describe('GnomeService', () => {
@@ -26,12 +26,20 @@ describe('GnomeService', () => {
   });
 
   it('return population of gnomes', () => {
-    service.getPopulation().subscribe((res) => {
+    service.getData().subscribe((res) => {
       const expectedResponse: GnomeApiResponse = { Brastlewark: gnomes };
       expect(res).toEqual(expectedResponse);
     });
 
     controller.expectOne(expectedUrl).flush({ Brastlewark: gnomes });
+  });
+
+  it('return population chunked data for pagination', () => {
+      const itemsPerPag = 2;
+      service.setPopulationData(gnomes);
+      service.setPaginationData(itemsPerPag);
+
+      expect(service.getPaginationData()).toEqual([[gnome1, gnome2],[gnome3, gnome4]])
   });
 
   it('passes through search errors', () => {
@@ -40,7 +48,7 @@ describe('GnomeService', () => {
 
     let body: { status: number; message: string };
 
-    service.getPopulation().subscribe(
+    service.getData().subscribe(
       () => {},
       (error) => {
         body = error;
