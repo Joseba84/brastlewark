@@ -9,8 +9,13 @@ import { Gnome } from './models/gnome';
 export class AppComponent {
   title = 'Brastlewark';
   gnome: Gnome;
+  gnomeForTeam: Gnome;
 
   setGnome(gnome: Gnome) {
     this.gnome = gnome;
+  }
+
+  recruit(gnome: Gnome) {
+    this.gnomeForTeam = gnome;
   }
 }

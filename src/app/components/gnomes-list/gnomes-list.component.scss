@@ -3,11 +3,12 @@
     height: 577px;
     overflow: auto;
     border: 2px solid $brand4;
+    background-color: $brand1;
 
     &-gnome {
         border-bottom: 2px solid $brand4;
         padding: 10px;
-        color: white;
+        color: $brand2;
     }
 
     &-gnome-row {

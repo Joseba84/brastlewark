@@ -6,6 +6,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { GnomesListComponent } from './components/gnomes-list/gnomes-list.component';
 import { SearchComponent } from './components/search/search.component';
 import { DetailComponent } from './components/detail/detail.component';
+import { TeamComponent } from './components/team/team.component';
 import { gnome1 } from '../app/spec-helpers/gnome.spec-helper';
 
 describe('AppComponent', () => {
@@ -22,7 +23,8 @@ describe('AppComponent', () => {
         HeaderComponent,
         GnomesListComponent,
         SearchComponent,
-        DetailComponent
+        DetailComponent,
+        TeamComponent
       ],
     }).compileComponents();
     fixture = TestBed.createComponent(AppComponent);

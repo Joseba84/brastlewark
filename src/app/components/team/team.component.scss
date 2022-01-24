@@ -1,0 +1,27 @@
+@import "../../../styles/colors.scss";
+.team {
+    background-color: $brand1;
+    color: $brand2;
+    border: .5rem solid $brand2;
+    padding: 20px;
+    max-width: 80%;
+    margin: 20px auto;
+    ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        li {
+            text-align: center;
+        }
+    }
+
+    img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+    }
+
+    button {
+        margin-top: 20px;
+    }
+}

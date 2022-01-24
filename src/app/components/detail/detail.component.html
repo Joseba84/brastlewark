@@ -2,8 +2,8 @@
     <img alt="{{ gnome.name }}" class="list-gnome-img" src="{{ gnome.thumbnail }}">
     <p class="name"><span>Name: </span>{{ gnome.name }}</p>
     <p class="age"><span>Age: </span>{{ gnome.age }}</p>
-    <p class="weight"><span>Weight: </span>{{ gnome.weight }}</p>
-    <p class="height"><span>Height: </span>{{ gnome.height }}</p>
+    <p class="weight"><span>Weight: </span>{{ fixDecimals(gnome.weight) }} kgs</p>
+    <p class="height"><span>Height: </span>{{ fixDecimals(gnome.height) }} cms</p>
     <p class="hair"><span>Hair: </span>{{ gnome.hair_color }}</p>
 
     <div *ngIf="gnome.professions.length > 0">
@@ -21,5 +21,5 @@
     </div>
 
 
-    <button>Recruit</button>
+    <button (click)="recruit()">Recruit</button>
 </div>

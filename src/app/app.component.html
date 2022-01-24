@@ -1,8 +1,9 @@
 <div role="main">
   <app-header></app-header>
+  <app-team [gnome]="gnomeForTeam"></app-team>
   <div class="content">
     <app-gnomes-list class="list-content" (sendGnome)="setGnome($event)"></app-gnomes-list>
-    <app-detail class="detail-content" [gnome]="gnome"></app-detail>
+    <app-detail class="detail-content" [gnome]="gnome" (sendGnome)="recruit($event)"></app-detail>
   </div>
   <!-- Footer -->
   <footer></footer>

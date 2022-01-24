@@ -9,13 +9,15 @@ import { GnomesListComponent } from './components/gnomes-list/gnomes-list.compon
 import { SearchComponent } from './components/search/search.component';
 import { FormsModule } from '@angular/forms';
 import { DetailComponent } from './components/detail/detail.component';
+import { TeamComponent } from './components/team/team.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     GnomesListComponent,
     SearchComponent,
-    DetailComponent
+    DetailComponent,
+    TeamComponent
   ],
   imports: [
     BrowserModule,
