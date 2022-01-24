@@ -10,6 +10,7 @@ import { SearchComponent } from './components/search/search.component';
 import { FormsModule } from '@angular/forms';
 import { DetailComponent } from './components/detail/detail.component';
 import { TeamComponent } from './components/team/team.component';
+import { FiltersComponent } from './filters/filters.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +18,8 @@ import { TeamComponent } from './components/team/team.component';
     GnomesListComponent,
     SearchComponent,
     DetailComponent,
-    TeamComponent
+    TeamComponent,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,

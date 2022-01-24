@@ -42,12 +42,36 @@ describe('GnomeService', () => {
       expect(service.getPaginationData()).toEqual([[gnome1, gnome2],[gnome3, gnome4]])
   });
 
-  it("should set filtered data", () => {
+  it('should set filtered data by name', () => {
     service.setPopulationData(gnomes);
     service.filterData("in", 1);
 
     expect(service.getPaginationData().length).toBe(2);
     expect(service.getPaginationData()).toEqual([[gnome2], [gnome4]]);
+  });
+
+  it('should set filtered data by age', () => {
+    service.setPopulationData(gnomes);
+    service.filterData("240", 1);
+
+    expect(service.getPaginationData().length).toBe(1);
+    expect(service.getPaginationData()).toEqual([[gnome3]]);
+  });
+
+  it(`should set filtered data by 'age' and order by 'height'`, () => {
+    service.setPopulationData(gnomes);
+    service.filterData("2", 1, "height");
+
+    expect(service.getPaginationData().length).toBe(2);
+    expect(service.getPaginationData()).toEqual([[gnome3], [gnome2]]);
+  });
+
+  it(`should set filtered data by 'age' and order by 'weight'`, () => {
+    service.setPopulationData(gnomes);
+    service.filterData("2", 1, "weight");
+
+    expect(service.getPaginationData().length).toBe(2);
+    expect(service.getPaginationData()).toEqual([[gnome2], [gnome3]]);
   });
 
   it('error', () => {

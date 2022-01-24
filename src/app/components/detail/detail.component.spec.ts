@@ -39,7 +39,12 @@ describe('DetailComponent', () => {
 
   it('should have as weight', () => {
     compiled = fixture.nativeElement;
-    expect(compiled.querySelector('p.weight').textContent).toContain(gnome1.weight);
+    expect(compiled.querySelector('p.weight').textContent).toContain(gnome1.weight.toFixed(2));
+  });
+
+  it('should have as height', () => {
+    compiled = fixture.nativeElement;
+    expect(compiled.querySelector('p.height').textContent).toContain(gnome1.height.toFixed(2));
   });
 
   it('should have as hair', () => {

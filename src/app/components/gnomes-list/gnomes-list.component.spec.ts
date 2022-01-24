@@ -3,6 +3,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
 import { GnomesListComponent } from './gnomes-list.component';
 import { SearchComponent } from '../search/search.component';
+import { FiltersComponent } from 'src/app/filters/filters.component';
 import { By } from '@angular/platform-browser';
 import { gnome1, gnome2, gnome3, gnome4 } from '../../spec-helpers/gnome.spec-helper';
 
@@ -18,7 +19,8 @@ describe('GnomesListComponent', () => {
       ],
       declarations: [
         GnomesListComponent,
-        SearchComponent
+        SearchComponent,
+        FiltersComponent
       ]
     })
       .compileComponents();
@@ -56,7 +58,7 @@ describe('GnomesListComponent', () => {
         expect(component.currentPag).toBe(4);
       });
 
-      it(`it shouldn't decrement if is first position`, () => {
+      it(`shouldn't decrement if is first position`, () => {
         component.currentPag = 0;
         component.prevPag();
 

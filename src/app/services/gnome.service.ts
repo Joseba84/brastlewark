@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, filter } from 'rxjs/operators';
 import { Gnome } from './../models/gnome';
 
 export interface GnomeApiResponse{
@@ -44,10 +44,22 @@ export class GnomeService {
     return chunkData || [];
   }
 
-  public filterData(term: string, size: number) {
+  public filterData(term: string, size: number, orderBy?: string) {
     const data = this.populationData;
-    const filteredData = data.filter((i) => i.name.toLowerCase().indexOf(term.toLowerCase()) > -1 );
+    let filteredData: Gnome[] = data.filter((i) =>
+    i.name.toLowerCase().indexOf(term.toLowerCase()) > -1 ||
+    i.age.toString().indexOf(term.toLowerCase()) > -1);
+
+    filteredData = orderBy ? this.getDataFilters(filteredData, orderBy): filteredData;
+
     this.paginationData = term.length >= 0 ? this.chunkData(size, filteredData): this.chunkData(size);
+  }
+
+  public getDataFilters(data: Gnome[], orderBy: string): any {
+    let dataOrderBy: Gnome[];
+    dataOrderBy = data.sort((a, b) => (a[orderBy] > b[orderBy]) ? 1 : ((b[orderBy] > a[orderBy]) ? -1 : 0))
+
+    return dataOrderBy;
   }
 
   private handleError<T>(operation = 'operation') {

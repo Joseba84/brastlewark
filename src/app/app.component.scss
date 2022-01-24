@@ -1,13 +1,26 @@
+@import "../styles/sizes.scss";
+
 .content {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    @media (max-width: $mobile) {
+        flex-direction: column;
+    }
 }
 .list-content {
     width: 65%;
     margin: 20px;
+    @media (max-width: $mobile) {
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+    }
 }
 
 .detail-content {
     width: 35%;
+    @media (max-width: $mobile) {
+        width: 100%;
+    }
 }

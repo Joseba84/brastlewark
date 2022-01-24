@@ -3,8 +3,8 @@
 
 body {
     font-family: 'Roboto Mono', monospace;
-    background: rgb(138,79,255);
-    background: radial-gradient(circle, rgba(138,79,255,1) 12%, rgba(195,190,247,1) 71%);
+    background: rgb(239,255,250);
+    background: radial-gradient(circle, rgba(239,255,250,1) 12%, rgba(255,255,255,1) 71%);
     min-height: 100vh;
 }
 
@@ -14,9 +14,11 @@ button {
     border: 2px solid $brand2;
     padding: 10px;
     font-size: 1rem;
+    min-width: 80px;
+    margin-right: 5px;
     cursor:pointer;
     transition: background-color 0.5s;
-    &:hover {
+    &:hover, &.selected {
         background-color: $brand2;
         color: $brand4;
         transition: background-color 0.5s;

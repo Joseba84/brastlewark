@@ -1,17 +1,23 @@
 @import "../../../styles/colors.scss";
+@import "../../../styles/sizes.scss";
 .team {
     background-color: $brand1;
     color: $brand2;
-    border: .5rem solid $brand2;
+    border: 5px solid $brand2;
     padding: 20px;
     max-width: 80%;
     margin: 20px auto;
+
     ul {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         li {
             text-align: center;
+        }
+
+        @media (max-width: $mobile) {
+            flex-direction: column;
         }
     }
 

@@ -1,9 +1,42 @@
 @import "../../../styles/colors.scss";
+@import "../../../styles/sizes.scss";
 .list {
     height: 577px;
     overflow: auto;
     border: 2px solid $brand4;
     background-color: $brand1;
+
+    .name {
+        min-width: 160px;
+    }
+
+    .properties {
+        display: flex;
+        justify-content: space-around;
+        padding: 10px;
+        border-bottom: 2px solid $brand4;
+    }
+
+    &-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @media (max-width: $mobile) {
+           flex-direction: column;
+        }
+        .search-content {
+            width: 70%;
+            @media (max-width: $mobile) {
+                width: 100%;
+            }
+        }
+        .filters-content {
+            width: 30%;
+            @media (max-width: $mobile) {
+                width: 50%;
+            }
+        }
+    }
 
     &-gnome {
         border-bottom: 2px solid $brand4;
@@ -29,4 +62,8 @@
         &.closed { display: none; }
         &.open { display: block; }
     }
+}
+
+.pag-text {
+    margin: 10px 0;
 }

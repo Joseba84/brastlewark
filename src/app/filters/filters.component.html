@@ -1,0 +1,5 @@
+<div class="filters">
+    <p>Order by </p>
+    <button (click)="setOrder('weight')" [ngClass]="isActive('weight')">Weight</button>
+    <button (click)="setOrder('height')" [ngClass]="isActive('height')">Height</button>
+</div>

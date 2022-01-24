@@ -1,0 +1,11 @@
+@import "../../../styles/colors.scss";
+.search {
+    border: 2px solid $brand4;
+    height: 20px;
+    width: 100%;
+    padding: 20px 23px 20px 30px;
+    margin: 10px 0;
+    outline: 0;
+    background-color: $brand3;
+    font-size: 1rem;
+}

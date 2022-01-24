@@ -11,6 +11,6 @@ export class SearchComponent {
   @Output() searchTerm = new EventEmitter<string>();
 
   search() {
-    this.searchTerm.emit(this.term);
+    this.searchTerm.emit(this.term.toString());
   }
 }

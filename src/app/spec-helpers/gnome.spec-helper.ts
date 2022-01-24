@@ -28,7 +28,7 @@ export const gnome2: Gnome = {
     "thumbnail": "http://www.publicdomainpictures.net/pictures/120000/nahled/white-hen.jpg",
     "age": 288,
     "weight": 35.279167,
-    "height": 110.43628,
+    "height": 127.88554,
     "hair_color": "Green",
     "professions": [
         "Brewer",
@@ -47,7 +47,7 @@ export const gnome3 = {
     "thumbnail": "http://www.publicdomainpictures.net/pictures/10000/nahled/1-1275919724d1Oh.jpg",
     "age": 240,
     "weight": 40.97596,
-    "height": 127.88554,
+    "height": 110.43628,
     "hair_color": "Red",
     "professions": [
         "Carpenter",
