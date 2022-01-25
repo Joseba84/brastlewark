@@ -9,6 +9,7 @@ export class FiltersComponent {
   activeFilter: string;
   @Output() selectedFilter = new EventEmitter<string>();
 
+  // send orderBy 'height' or 'weight' to gnome-list component
   setOrder(filter: string) {
     if (filter === this.activeFilter) {
       this.activeFilter = '';

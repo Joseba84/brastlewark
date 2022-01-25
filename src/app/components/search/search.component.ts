@@ -10,6 +10,7 @@ export class SearchComponent {
 
   @Output() searchTerm = new EventEmitter<string>();
 
+  // send search term to gnome-list component
   search() {
     this.searchTerm.emit(this.term.toString());
   }

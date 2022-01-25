@@ -53,6 +53,7 @@ export class GnomesListComponent implements OnInit {
     this.setPagination();
   }
 
+  // send gnome to show in detail component
   showDetail(gnome : Gnome) {
     this.sendGnome.emit(gnome);
   }

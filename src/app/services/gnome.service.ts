@@ -35,6 +35,7 @@ export class GnomeService {
     this.paginationData = this.chunkData(size);
   }
 
+  // split data for pagination
   public chunkData (size: number, data?: Gnome[]): Gnome[][] {
     const population = data || this.populationData.slice();
     const chunkData = [];
@@ -44,6 +45,7 @@ export class GnomeService {
     return chunkData || [];
   }
 
+  // filter data by search term and/or order by
   public filterData(term: string, size: number, orderBy?: string) {
     const data = this.populationData;
     let filteredData: Gnome[] = data.filter((i) =>

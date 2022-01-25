@@ -10,6 +10,7 @@ export class DetailComponent {
   @Input() gnome: Gnome;
   @Output() sendGnome = new EventEmitter<Gnome>();
 
+  // send gnome to team component
   recruit() {
     this.sendGnome.emit(this.gnome);
   }
